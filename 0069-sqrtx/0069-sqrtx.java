@@ -1,19 +1,27 @@
 class Solution {
     public int mySqrt(int x) {
-        if (x == 0) {
-        return 0;
-    }
-    int left = 1, right = x;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (mid <= x / mid && (mid + 1) > x / (mid + 1)) {
-            return mid;
-        } else if (mid > x / mid) {
-            right = mid - 1;
-        } else {
-            left = mid + 1;
+        if(x==0)
+        {
+            return 0;
         }
-    }
-    return -1;
+        if(x==1)
+        {
+            return 1;
+        }
+      
+       
+
+        for(int i=1;i<=x/2;i++)
+        {
+            if((long)i*i==x)
+            return (int)i;
+            else if((long)i*i>x)
+            {
+                return (int)i-1;
+            }
+
+
+        }
+        return x/2;
     }
 }
