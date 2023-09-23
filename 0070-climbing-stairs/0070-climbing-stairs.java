@@ -1,18 +1,12 @@
 class Solution {
     public int climbStairs(int n) {
-        int[] memo = new int[n+1];
-        return calculateWays(n,memo);
-    }
-    private int calculateWays(int n,int[] memo) {
-        if(n==1||n==2){
-            return n;
+        if (n <= 2) return n;
+        
+        int x = 1, y = 2;
+        for(int i = 2; i < n; i ++) {
+            int temp = x; x = y; y = temp + y;
         }
-
-        if(memo[n]!=0){
-            return memo[n];
-        }
-
-        memo[n] = calculateWays(n-1,memo)+ calculateWays(n-2,memo);
-        return memo[n];
+        return y;
+        
     }
 }
